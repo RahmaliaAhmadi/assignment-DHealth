@@ -31,6 +31,9 @@ Route::group(['middleware' => LoginMiddleware::class], function () {
 
     //Data KTP
     Route::resource('transaction', PrescriptionController::class, ['only' => [
-        'index', 'store', 'update', 'edit', 'destroy'
+        'index', 'create','store', 'update', 'edit', 'destroy'
     ]]);
+    Route::get('/report-transaction',[PrescriptionController::class, 'pdfTransaction']);
+    Route::get('/obatJson',  [PrescriptionController::class, 'jsonObat'])->name('obat.json');
+    Route::get('/sigaJson',  [PrescriptionController::class, 'jsonSigna'])->name('signa.json');
 });
