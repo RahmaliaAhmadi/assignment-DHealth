@@ -204,7 +204,7 @@
     <script type="text/javascript">
         swal.fire({
             title: "Akses Ditolak",
-            text: "Anda Tidak Diizinkan Mengakses Modul Ini",
+            text: "Mohon Maaf Qty Melebihi Stok Yang Tersedia",
             type: "warning",
             icon: 'warning',
             closeOnConfirm: false,

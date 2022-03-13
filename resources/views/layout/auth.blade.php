@@ -52,6 +52,108 @@
     <script src="{{ asset('assets/js/custom.js')}}"></script>
 
     <!-- Page Specific JS File -->
+    @yield('js-custom')
+
+@if(Session::get('message') == 'update')
+  <script type="text/javascript">
+      swal.fire({
+          title: "Good Job!",
+          text: "Your Data Has Been Updated!",
+          type: "success",
+          icon: 'success',
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+      });
+  </script>
+@elseif(Session::get('message') == 'error')
+  <script type="text/javascript">
+      swal.fire({
+          title: "Error 404 Not Found!",
+          text: "Data is Broke!",
+          type: "warning",
+          icon: 'warning',
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+      });
+  </script>
+@elseif(Session::get('message') == 'insert')
+  <script type="text/javascript">
+      swal.fire({
+          title: "Good Job!",
+          text: "Your Data Has Been Inserted!",
+          type: "success",
+          icon: 'success',
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+      });
+  </script>
+@elseif(Session::get('message') == 'data_ada')
+  <script type="text/javascript">
+      swal.fire({
+          title: "Sorry!",
+          text: "Your Input Email/Username is Available on Database, Please Input Some Else!",
+          type: "warning",
+          icon: 'warning',
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+      });
+  </script>
+@elseif(Session::get('message') == 'password_sama')
+  <script type="text/javascript">
+      swal.fire({
+          title: "Sorry!",
+          text: "Your Input Password Not Same with Input Confirm Password, Please Try Again!",
+          type: "warning",
+          icon: 'warning',
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+      });
+  </script>
+@elseif(Session::get('message') == 'delete')
+  <script type="text/javascript">
+      swal.fire({
+          title: "Deleted!",
+          text: "Your Data Has Been Deleted!",
+          type: "success",
+          icon: 'success',
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+      });
+  </script>
+@elseif(Session::get('message') == 'login1')
+  <script type="text/javascript">
+      swal.fire({
+          title: "Login Gagal",
+          text: "Email tidak ditemukan",
+          type: "warning",
+          icon: 'warning',
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+      });
+  </script>
+@elseif(Session::get('message') == 'login2')
+  <script type="text/javascript">
+      swal.fire({
+          title: "Login Gagal",
+          text: "Password salah",
+          type: "warning",
+          icon: 'warning',
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+      });
+  </script>
+@elseif(Session::get('message') == 'prohibited')
+  <script type="text/javascript">
+      swal.fire({
+          title: "Akses Ditolak",
+          text: "Anda Tidak Diizinkan Mengakses Modul Ini",
+          type: "warning",
+          icon: 'warning',
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+      });
+  </script>
+@endif
 </body>
 
 </html>

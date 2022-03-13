@@ -5,8 +5,8 @@
     <div class="section-header">
         <h1>Form Input Resep</h1>
         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="#">Data Resep</a></div>
+            <div class="breadcrumb-item active"><a href="{{ url('/dashboard') }}">Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('transaction.index') }}">Data Resep</a></div>
             <div class="breadcrumb-item">Form Input Resep</div>
         </div>
     </div>
@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="type2" value="0">
+                            <input class="form-check-input" type="checkbox" name="type2[]" value="0" required>
                             <label class="form-check-label" for="type">
                                 <h4>Non Racikan</h4>
                             </label>
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label>Obat</label>
                             <input type="text" class="form-control" placeholder="Cari Obat" id="values1" onchange="checkcombo('loading1', 'values1', 'combobox1', '{{ route('obat.json') }}')">
-                            <select class="form-control" name="obat" id="combobox1">
+                            <select class="form-control" name="obat[]" id="combobox1" required>
                                 <option value="">Pilih Obat</option>
                             </select>
                             <div id="loading1" class="loading">
@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label>Signa</label>
                             <input type="text" class="form-control" placeholder="Cari Signa" id="values2" onchange="checkcombo('loading2', 'values2', 'combobox2', '{{ route('signa.json') }}')">
-                            <select class="form-control" name="signa" id="combobox2">
+                            <select class="form-control" name="signa[]" id="combobox2" required>
                                 <option value="">Pilih Signa</option>
                             </select>
                             <div id="loading2" class="loading">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="form-group">
                             <label>Qty</label>
-                            <input type="text" name="qty2" placeholder="Masukkan Qty" class="form-control">
+                            <input type="text" name="qty2[]" placeholder="Masukkan Qty" class="form-control" required>
                         </div>
 
                     </div>
@@ -62,7 +62,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="type" value="1">
+                            <input class="form-check-input" type="checkbox" name="type[]" value="1" required>
                             <label class="form-check-label" for="type">
                                 <h4>Racikan</h4>
                             </label>
@@ -74,13 +74,13 @@
                                 <th>Obat</th>
                                 <th>Qty</th>
                                 <th>Signa</th>
-                                <th>Remove</th>
+                                <th>Action</th>
                             </tr>
                             <tr>
                                 <td>
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Cari Obat" id="values3" onchange="checkcombo('loading3', 'values3', 'combobox3', '{{ route('obat.json') }}')">
-                                        <select class="form-control" name="obat_id[]" id="combobox3">
+                                        <select class="form-control" name="obat_id[]" id="combobox3" required>
                                             <option value="">Pilih Obat</option>
                                         </select>
                                         <div id="loading3" class="loading">
@@ -90,13 +90,13 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="text" name="qty[]" placeholder="Masukkan Qty" class="form-control">
+                                        <input type="number" name="qty[]" placeholder="Masukkan Qty" class="form-control">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Cari Signa" id="values4" onchange="checkcombo('loading4', 'values4', 'combobox4', '{{ route('signa.json') }}')">
-                                        <select class="form-control" name="signa_m_id[]" id="combobox4">
+                                        <select class="form-control" name="signa_m_id[]" id="combobox4" required>
                                             <option value="">Pilih Signa</option>
                                         </select>
                                         <div id="loading4" class="loading">
@@ -115,7 +115,7 @@
                                 <th>Racikan Manual</th>
                                 <th>Qty</th>
                                 <th>Signa</th>
-                                <th>Remove</th>
+                                <th>Action</th>
                             </tr>
                             <tr>
                                 <td>
@@ -125,13 +125,13 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="text" name="qty[]" placeholder="Masukkan Qty" class="form-control">
+                                        <input type="number" name="qty[]" placeholder="Masukkan Qty" class="form-control" required>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Cari Signa" id="values7" onchange="checkcombo('loading7', 'values7', 'combobox7', '{{ route('signa.json') }}')">
-                                        <select class="form-control" name="signa_m_id[]" id="combobox7">
+                                        <select class="form-control" name="signa_m_id[]" id="combobox7" required>
                                             <option value="">Pilih Signa</option>
                                         </select>
                                         <div id="loading7" class="loading">
@@ -152,7 +152,7 @@
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12">
                     <button class="btn btn-primary mr-1" type="submit">Submit</button>
-                    <button class="btn btn-secondary" type="reset">Back</button>
+                    <a href="{{ route('transaction.index') }}" class="btn btn-secondary">Back</a>
                 </div>
             </div>
         </div>
@@ -181,18 +181,18 @@
             '<td>'+
                 '<input type="text" name="obatalkes_nama" placeholder="cari Obat" id="obatalkes_nama" class="form-control" ' +
                 'onchange="checkcombo(\'' + loading + '\', \'' + value + '\', \'' + combobox + '\', \'' + route + '\')">' +
-                '<select class="form-control" name="obat_id[]" id="obat_id">' +
+                '<select class="form-control" name="obat_id[]" id="obat_id" required>' +
                 '<option value="">Pilih Obat</option>' +
                 '</select>' +
                 '<div id="loading5" class="loading">' +
                 '<img src="' + loading5 + '" ><small>Loading..</small>' +
                 '</div>'+
                 '</td>'+
-            '<td><input type="text" name="qty[]" placeholder="Masukkan Qty" class="form-control"></td>'+
+            '<td><input type="number" name="qty[]" placeholder="Masukkan Qty" class="form-control required"></td>'+
             '<td>'+
                 '<input type="text" name="signa_nama" placeholder="cari Signa" id="signa_nama" class="form-control" ' +
                 'onchange="checkcombo(\'' + loadingSigna + '\', \'' + valueSigna + '\', \'' + comboboxSigna + '\', \'' + routeSigna + '\')">' +
-                '<select class="form-control" name="signa_m_id[]" id="obat_id">' +
+                '<select class="form-control" name="signa_m_id[]" id="signa_m_id" required>' +
                 '<option value="">Pilih Signa</option>' +
                 '</select>' +
                 '<div id="loading5" class="loading">' +
@@ -221,12 +221,12 @@
             var comboboxSigna = "signa_m_id";
         $("#multiForm2").append(
             '<tr>'+
-            '<td><input type="text" name="name[]" placeholder="Masukkan Racikan Manual" class="form-control"></td>'+
-            '<td><label>Qty</label><input type="text" name="qty[]" placeholder="Masukkan Qty" class="form-control"></td>'+
+            '<td><input type="text" name="name[]" placeholder="Masukkan Racikan Manual" class="form-control" ></td>'+
+            '<td><label>Qty</label><input type="number" name="qty[]" placeholder="Masukkan Qty" class="form-control" ></td>'+
             '<td>'+
                 '<input type="text" name="signa_nama" placeholder="cari Signa" id="signa_nama" class="form-control" ' +
                 'onchange="checkcombo(\'' + loadingSigna + '\', \'' + valueSigna + '\', \'' + comboboxSigna + '\', \'' + routeSigna + '\')">' +
-                '<select class="form-control" name="signa_m_id[]" id="obat_id">' +
+                '<select class="form-control" name="signa_m_id[]" id="signa_m_id">' +
                 '<option value="">Pilih Signa</option>' +
                 '</select>' +
                 '<div id="loading8" class="loading">' +

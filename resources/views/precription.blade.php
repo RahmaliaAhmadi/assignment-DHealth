@@ -34,9 +34,9 @@
                                     <th data-field="check"><input type="checkbox" class="select-all"> </th>
                                     <th data-field="no" data-sortable="true">No</th>
                                     <th data-field="obat" data-sortable="true">Obat</th>
+                                    <th data-field="stok" data-sortable="true">Stok Obat</th>
                                     <th data-field="signa" data-sortable="true">Signa</th>
                                     <th data-field="qty" data-sortable="true">Qty</th>
-                                    <th data-field="action" data-align="center" data-sortable="true">Action</th>
                                 </tr>
                             </thead>
                             <?php $no = 1; ?>
@@ -46,17 +46,16 @@
                                     <td><input type="checkbox" name="check[]" type="checkbox" value="{{ $value->id }}" form="myform"></td>
 
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $value->obat->obatalkes_nama }}{{ $value->name }}</td>
+                                    @if( $value->obat_id == null)
+                                    <td>{{ $value->name }}</td>
+                                    <td>0</td>
+                                    @else
+                                    <td>{{ $value->obat->obatalkes_nama }}</td>
+                                    <td>{{ $value->obat->stok }}</td>
+                                    @endif
                                     <td>{{ $value->signa->signa_nama }}</td>
                                     <td>{{ $value->qty }}</td>
 
-                                    <td>
-                                        <meta name="csrf-token" content="{{ csrf_token() }}">
-                                        <a href="#editModal" class="btn btn-info btn-sm" data-toggle="modal" data-id="{{ $value->id }}" title="Edit Data">
-                                            <i class="fas fa-eye">
-                                            </i>
-                                        </a>
-                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
